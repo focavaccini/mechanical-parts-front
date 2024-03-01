@@ -1,0 +1,17 @@
+.carousel-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+.carousel-image {
+    width: 10%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.image-main{
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 70%;
+    height: auto;
+}

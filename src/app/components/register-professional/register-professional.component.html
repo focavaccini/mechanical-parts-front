@@ -1,0 +1,37 @@
+<div class="card add-professional">
+    <h5 class="card-header">Adicionar/Atualizar profissional</h5>
+    <div class="card-body">
+        <form id="add-form" (ngSubmit)="f.form.valid && saveProfessional(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" [(ngModel)]="professional.name" id="nome" name="name" #name="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+                    placeholder="Digite o nome">
+                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                    <div *ngIf="name.errors?.['required']">Nome é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="text" [(ngModel)]="professional.phone" id="phone" name="phone" #phone="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"
+                    placeholder="Digite o telefone">
+                <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+                    <div *ngIf="phone.errors?.['required']">Telefone é obrigatória</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" [(ngModel)]="professional.email" id="email" name="email" #email="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+                    placeholder="Digite o email">
+                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                    <div *ngIf="email.errors?.['required']">Email é obrigatório</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-add-professional">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-professional" (click)="cleanForm(f)">Cancelar</button>
+        </form>
+    </div>
+</div>
+

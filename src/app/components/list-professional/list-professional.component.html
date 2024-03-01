@@ -1,0 +1,35 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Profissionais</li>
+    </ol>
+</nav>
+<div class="container">
+    <div class="card list-professional">
+        <h5 class="card-header">Lista de Profissionais</h5>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let professional of professionals" class="profissional-item">
+                        <td>{{professional.id}}</td>
+                        <td>{{professional.name}}</td>
+                        <td>{{professional.email}}</td>
+                        <td>{{professional.phone}}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning btn-sm" (click)="editProfessional(professional.id!)">Editar</button>
+                            <button type="button" class="btn btn-danger btn-sm ml-1" (click)="irParaComponenteDestino()">Deletar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

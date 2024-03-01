@@ -1,0 +1,141 @@
+<!-- <app-first-component></app-first-component> -->
+
+<!-- <app-parent-data [name]="userName", [userData]="userData"></app-parent-data> -->
+<!-- <app-parent-data [name]="userName"> -->
+
+<!-- <app-if-render></app-if-render> -->
+<!-- <div>
+    <h1>Menu</h1>
+    <nav>
+        <app-list-professional></app-list-professional>
+        <app-register-professional></app-register-professional>
+        <button  routerLink="/componente-origem">Listar todos os profissionais</button >
+        <button  routerLink="/componente-destino">Cadastrar ou editar o registro de um profissinal</button >
+    </nav>
+    <router-outlet></router-outlet> 
+</div> -->
+<!-- app.component.html -->
+<div class="title-menu">Mechanical Parts</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" routerLink="/list-professional">Listar todos os profissionais</a>
+        <a class="nav-item nav-link" routerLink="/register-professional">Cadastrar ou editar o registro de um profissinal</a>
+        <a class="nav-item nav-link" routerLink="/edit-professional/id">Editar o registro de um profissinal</a>
+        <a class="nav-item nav-link" routerLink="/list-client">Listar todos os clientes</a>
+        <a class="nav-item nav-link" routerLink="/edit-client/id">Editar o registro de um client</a>
+        <a class="nav-item nav-link disabled" href="#">Disabled</a>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet> 
+  
+  <app-home-page></app-home-page>
+  <app-footer></app-footer>
+<!-- <div class="home-container">
+    <header class="header">
+      <h1 class="title">Bem-vindo à Minha Aplicação</h1>
+      <p class="subtitle">Explore nossos recursos incríveis</p>
+    </header>
+    <nav class="menu">
+        <button  routerLink="/componente-origem">Listar todos os profissionais</button >
+        <button  routerLink="/componente-destino">Cadastrar ou editar o registro de um profissinal</button >
+    </nav>
+    <router-outlet></router-outlet>  -->
+    <!-- <section class="hero-section">
+      <div class="hero-text">
+        <h2 class="hero-title">Descubra Novas Oportunidades</h2>
+        <p class="hero-description">Junte-se a nós e explore as possibilidades infinitas.</p>
+      </div>
+      <img class="hero-image" src="assets/hero-image.jpg" alt="Hero Image">
+    </section> -->
+  <!-- </div> -->
+  
+<!-- <h1>Lista de Profissionais</h1>
+  <ul class="profissionais-lista">
+    <li *ngFor="let professional of professionals" class="profissional-item">
+      <span class="professional-id">{{ professional.id }}</span>
+      <span class="professional-name">{{ professional.name }}</span>
+      <span class="professional-phone">{{ professional.phone }}</span>
+      <span class="professional-email">{{ professional.email }}</span>
+    </li>
+  </ul> -->
+
+<!-- <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Profissionais</li>
+    </ol>
+</nav>
+<div class="container">
+    <div class="card list-professional">
+        <h5 class="card-header">Lista de Profissionais</h5>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let professional of professionals" class="profissional-item">
+                        <td>{{professional.id}}</td>
+                        <td>{{professional.name}}</td>
+                        <td>{{professional.email}}</td>
+                        <td>{{professional.phone}}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning btn-sm">Editar</button>
+                            <button type="button" class="btn btn-danger btn-sm ml-1">Deletar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="card add-professional">
+    <h5 class="card-header">Adicionar/Atualizar profissionais-lista</h5>
+    <div class="card-body">
+        <form id="add-form" (ngSubmit)="f.form.valid && saveProfessional(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" [(ngModel)]="professional.name" id="nome" name="name" #name="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+                    placeholder="Digite o nome">
+                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                    <div *ngIf="name.errors?.['required']">Nome é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="text" [(ngModel)]="professional.phone" id="phone" name="phone" #phone="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"
+                    placeholder="Digite o telefone">
+                <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+                    <div *ngIf="phone.errors?.['required']">Telefone é obrigatória</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" [(ngModel)]="professional.email" id="email" name="email" #email="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+                    placeholder="Digite o email">
+                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                    <div *ngIf="email.errors?.['required']">Email é obrigatório</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-add-professional">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-professional" (click)="cleanForm(f)">Cancelar</button>
+        </form>
+    </div>
+</div> -->
+
