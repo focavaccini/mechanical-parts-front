@@ -47,7 +47,6 @@ export class RegisterProfessionalComponent {
           this.responseReturn = response;
           alert(this.rn = 'Olá ' + response.name +'. Foi enviado um email com as instruções para o endereço ' + response.email);
         this.cleanForm(form);
-        console.log(this.rn);
       });
     }
   }

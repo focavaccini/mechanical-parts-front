@@ -1,0 +1,54 @@
+<div class="card add-product">
+    <h5 class="card-header">Adicionar Produto</h5>
+    <div class="card-body">
+        <form id="add-form" (ngSubmit)="f.form.valid && saveProduct(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" [(ngModel)]="product.name" id="nome" name="name" #name="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+                    placeholder="Digite o nome">
+                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                    <div *ngIf="name.errors?.['required']">Nome é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="identifyCode">Código Identificador</label>
+                <input type="text" [(ngModel)]="product.identifyCode" id="identifyCode" name="identifyCode" #identifyCode="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && identifyCode.invalid }"
+                    placeholder="Digite o código identificador">
+                <div *ngIf="f.submitted && identifyCode.invalid" class="invalid-feedback">
+                    <div *ngIf="identifyCode.errors?.['required']">Código identificador é obrigatória</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="value">Valor</label>
+                <input type="text" [(ngModel)]="product.value" id="value" name="value" #value="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && value.invalid }"
+                    placeholder="Digite o valor">
+                <div *ngIf="f.submitted && value.invalid" class="invalid-feedback">
+                    <div *ngIf="value.errors?.['required']">Valor é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="value">Quantidade</label>
+                <input type="text" [(ngModel)]="product.quantityTotal" id="quantityTotal" name="quantityTotal" #quantityTotal="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && quantityTotal.invalid }"
+                    placeholder="Digite a quantidade">
+                <div *ngIf="f.submitted && quantityTotal.invalid" class="invalid-feedback">
+                    <div *ngIf="quantityTotal.errors?.['required']">Quantidade é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="file">Imagem</label>
+                <input type="file" (change)="onFileSelected($event)" id="file" name="file" required
+                    class="form-control" accept="image/*">
+                <div *ngIf="f.submitted && f.controls['file'].errors?.['required']" class="invalid-feedback">
+                    <div *ngIf="f.controls['file'].errors?.['required']">Imagem é obrigatória</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-add-professional">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-professional" (click)="cleanForm(f)">Cancelar</button>
+        </form>
+    </div>
+</div>
+

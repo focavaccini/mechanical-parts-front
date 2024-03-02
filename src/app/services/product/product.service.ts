@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
 import { ProductModel } from '../../models/ProductModel';
+import { ProductImageModel } from 'src/app/models/ProductImage';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,13 @@ export class ProductService {
       )
   }
 
+  insertImage(formData: FormData, idProduct: number) : Observable<ProductImageModel> {
+    return this.httpClient.post<ProductImageModel>(this.url + '/' + idProduct, formData)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
   // atualiza um produto
   updateProduct(product: ProductModel): Observable<ProductModel> {
     return this.httpClient.put<ProductModel>(this.url + '/' + product.id, JSON.stringify(product), this.httpOptions)

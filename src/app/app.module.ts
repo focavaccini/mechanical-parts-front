@@ -17,6 +17,7 @@ import { EditProfessionalComponent } from './components/edit-professional/edit-p
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CostumeInterceptor } from './services/interceptors/costume.interceptor';
+import { RegisterProductComponent } from './components/register-product/register-product.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CostumeInterceptor } from './services/interceptors/costume.interceptor'
     FooterComponent,
     LoginComponent,
     HomeComponent,
+    RegisterProductComponent,
   ],
   imports: [
     BrowserModule,
