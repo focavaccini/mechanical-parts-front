@@ -41,7 +41,6 @@ export class ListProfessionalComponent implements OnInit{
       if(id){
         this.router.navigate(['/edit-professional/', id]);
       } else {
-        console.error('O id não está definido.');
       }
   }
 

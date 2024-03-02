@@ -8,6 +8,7 @@ import { ListClientComponent } from './components/list-client/list-client.compon
 import { EditClientComponent } from './components/edit-client/edit-client.component';
 import { LoginComponent } from './components/login/login.component'
 import { HomeComponent } from './components/home/home.component';
+import { ListProductsComponent } from './components/list-products/list-products.component';
 
 const routes: Routes = [
     {
@@ -28,6 +29,8 @@ const routes: Routes = [
             { path: 'edit-professional/:id', component: EditProfessionalComponent },
             { path: 'list-client', component: ListClientComponent },
             { path: 'edit-client/:id', component: EditClientComponent },
+            { path: 'list-product', component: ListProductsComponent },
+            // { path: 'edit-prduct/:id', component: EditClientComponent },
         ]
     },
     {

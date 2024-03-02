@@ -41,7 +41,6 @@ export class ListClientComponent implements OnInit {
   }
 
   editClient(id: number) {
-    console.log(id);
     if(id) {
       this.router.navigate(['/edit-client/', id])
     } else {
