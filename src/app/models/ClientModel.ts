@@ -1,5 +1,5 @@
-import { CarModel } from "./CarModel";
 import { AddressModel } from "./AddressModel";
+
 export class ClientModel {
     id!: number;
     name!: string;
@@ -8,7 +8,6 @@ export class ClientModel {
     cpf!: string;
     sexo!: string;
     birthdate!: string;
-    address!: any;
+    address!: AddressModel;
     car!: any;
-    // outras propriedades do usuário
 }

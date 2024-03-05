@@ -52,21 +52,21 @@ export class EditClientComponent implements OnInit {
     sexo: new FormControl(''),
     birthdate: new FormControl(''),
    
-    addressId: new FormControl(''),
+    addressId: new FormControl(0),
     addressNeighborhood: new FormControl(''),
     addressComplement: new FormControl(''),
     addressNumber: new FormControl(''),
     addressStreet: new FormControl(''),
     addressCep: new FormControl(''),
 
-    addressCityId: new FormControl(''),
+    addressCityId: new FormControl(0),
     addressCity: new FormControl(''),
     
-    addressStateId: new FormControl(''),
+    addressStateId: new FormControl(0),
     addressState: new FormControl(''),
     addressStateSigla: new FormControl(''),
 
-    carId: new FormControl(''),
+    carId: new FormControl(0),
     carModel: new FormControl(''),
     carColor: new FormControl(''),
     carLicensePlate: new FormControl(''),
@@ -101,7 +101,6 @@ export class EditClientComponent implements OnInit {
   }
 
   changedCities(selectedState: string) {
-    console.log('changedCities');
     this.getCitiesByNameState(selectedState);
   }
 
@@ -114,12 +113,9 @@ export class EditClientComponent implements OnInit {
 
 
   getClient() {
-    console.log("entrou");
     this.route.params.subscribe(params =>{
-      console.log(params['id']);
       this.clienteService.getClientById(params['id']).subscribe(
       {next:(value)=>{
-          console.log(value)
           this.clientForm.patchValue({
             id: value.id,
             name: value.name,
@@ -151,7 +147,6 @@ export class EditClientComponent implements OnInit {
       }}
       );
     });
-    console.log(this.clientForm);
   }
 
   updateClient() {

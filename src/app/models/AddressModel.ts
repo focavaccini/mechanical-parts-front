@@ -1,6 +1,8 @@
+import { CityModel } from "./CityModel";
+
 export class AddressModel {
     id!: number;
-    city!: string;
+    city!: CityModel;
     neighborhood!: string;
     number!: string;
     street!: string;

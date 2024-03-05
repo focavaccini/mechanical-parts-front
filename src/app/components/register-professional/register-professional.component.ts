@@ -29,12 +29,6 @@ export class RegisterProfessionalComponent {
         this.rn;
       }
 
-        // getProfessionals(){
-  //   this.professionalService.getProfessionals().subscribe((professionals: Professional[])  =>{
-  //     this.professionals = professionals;
-  //   })
-  // }
-
   saveProfessional(form: NgForm) {
 
     if (this.professional.id !== undefined) {

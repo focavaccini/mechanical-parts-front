@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component'
 import { HomeComponent } from './components/home/home.component';
 import { ListProductsComponent } from './components/list-products/list-products.component';
 import { RegisterProductComponent } from './components/register-product/register-product.component';
+import { RegisterClientComponent } from './components/register-client/register-client.component';
 
 const routes: Routes = [
     {
@@ -32,6 +33,7 @@ const routes: Routes = [
             { path: 'edit-client/:id', component: EditClientComponent },
             { path: 'list-product', component: ListProductsComponent },
             { path: 'register-product', component: RegisterProductComponent },
+            { path: 'register-client', component: RegisterClientComponent },
         ]
     },
     {

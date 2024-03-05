@@ -1,0 +1,176 @@
+<div class="card add-client">
+    <h5 class="card-header">Cadastrar Cliente</h5>
+    <div class="card-body">
+        <form id="add-form" (ngSubmit)="f.form.valid && saveClient(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" [(ngModel)]="client.name" id="nome" name="name" #name="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+                    placeholder="Digite o nome">
+                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                    <div *ngIf="name.errors?.['required']">Nome é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="text" [(ngModel)]="client.phone" id="phone" name="phone" #phone="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"
+                    placeholder="Digite o telefone">
+                <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+                    <div *ngIf="phone.errors?.['required']">Telefone é obrigatória</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" [(ngModel)]="client.email" id="email" name="email" #email="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+                    placeholder="Digite o email">
+                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                    <div *ngIf="email.errors?.['required']">Email é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sexo">Sexo</label>
+                <select [(ngModel)]="client.sexo" id="sexo" name="sexo" #sexo="ngModel">
+                <option [ngValue]="null" disabled>Selecione o genero/option>
+                <option *ngFor="let gender of genders" [ngValue]="gender.name">{{ gender.name }}</option>
+                </select>
+                <div *ngIf="f.submitted && fuel.invalid" class="invalid-feedback">
+                    <div *ngIf="fuel.errors?.['required']">Combustível é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" [(ngModel)]="client.cpf" id="cpf" name="cpf" #cpf="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }"
+                    placeholder="Digite o cpf">
+                <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
+                    <div *ngIf="cpf.errors?.['required']">CPF é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Data de Nascimento</label>
+                <input type="text" [(ngModel)]="client.birthdate" id="birthdate" name="birthdate" #birthdate="ngModel"
+                    required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && birthdate.invalid }"
+                    placeholder="Digite a data de nascimento">
+                <div *ngIf="f.submitted && birthdate.invalid" class="invalid-feedback">
+                    <div *ngIf="birthdate.errors?.['required']">Data de nascimento é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Bairro</label>
+                <input type="text" [(ngModel)]="address.neighborhood" id="neighborhood" name="neighborhood" #neighborhood="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && neighborhood.invalid }"
+                    placeholder="Digite bairro">
+                <div *ngIf="f.submitted && neighborhood.invalid" class="invalid-feedback">
+                    <div *ngIf="neighborhood.errors?.['required']">Bairro é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="complement">Complemento</label>
+                <input type="text" [(ngModel)]="address.complement" id="complement" name="complement" #complement="ngModel"
+                    required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && complement.invalid }"
+                    placeholder="Digite o complemento">
+                <div *ngIf="f.submitted && complement.invalid" class="invalid-feedback">
+                    <div *ngIf="complement.errors?.['required']">Complemento é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="number">Número</label>
+                <input type="text" [(ngModel)]="address.number" id="number" name="number" #number="ngModel"
+                    required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && number.invalid }"
+                    placeholder="Digite número do endereço">
+                <div *ngIf="f.submitted && number.invalid" class="invalid-feedback">
+                    <div *ngIf="number.errors?.['required']">Número é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="street">Logradouro</label>
+                <input type="text" [(ngModel)]="address.street" id="street" name="street" #street="ngModel"
+                    required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && street.invalid }"
+                    placeholder="Digite o logradouro">
+                <div *ngIf="f.submitted && street.invalid" class="invalid-feedback">
+                    <div *ngIf="street.errors?.['required']">Logradouro é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cep">CEP</label>
+                <input type="text" [(ngModel)]="address.cep" id="cep" name="cep" #cep="ngModel"
+                    required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && cep.invalid }"
+                    placeholder="Digite cep">
+                <div *ngIf="f.submitted && cep.invalid" class="invalid-feedback">
+                    <div *ngIf="cep.errors?.['required']">CEP é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="state">Estado</label>
+                <select [(ngModel)]="state.name" id="state" name="state" #state="ngModel" (change)="changedCities(state.name)">
+                <option [ngValue]="null" disabled>Selecione o Estado</option>
+                <option *ngFor="let state of states" [ngValue]="state.name">{{ state.name }}</option>
+                </select>
+                <div *ngIf="f.submitted && state.invalid" class="invalid-feedback">
+                    <div *ngIf="state.errors?.['required']">Estado é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city">Cidade</label>
+                <select [(ngModel)]="address.city" id="city" name="city" #city="ngModel">
+                <option [ngValue]="null" disabled>Seleciona a Cidade</option>
+                <option *ngFor="let city of cities" [ngValue]="city.name">{{city.name}}</option>
+                </select>
+                <div *ngIf="f.submitted && city.invalid" class="invalid-feedback">
+                    <div *ngIf="city.errors?.['required']">Cidade é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="fuel">Combustível</label>
+                <select [(ngModel)]="car.fuel" id="fuel" name="fuel" #fuel="ngModel">
+                <option [ngValue]="null" disabled>Selecione o Combustível</option>
+                <option *ngFor="let fuel of fuels" [ngValue]="fuel.name">{{ fuel.name }}</option>
+                </select>
+                <div *ngIf="f.submitted && fuel.invalid" class="invalid-feedback">
+                    <div *ngIf="fuel.errors?.['required']">Combustível é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="model">Modelo</label>
+                <input type="text" [(ngModel)]="car.model" id="model" name="model" #model="ngModel"
+                    required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }"
+                    placeholder="Digite o modelo">
+                <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                    <div *ngIf="model.errors?.['required']">Modelo é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="color">Cor</label>
+                <input type="text" [(ngModel)]="car.color" id="color" name="color" #color="ngModel"
+                    required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && color.invalid }"
+                    placeholder="Digite a cor">
+                <div *ngIf="f.submitted && color.invalid" class="invalid-feedback">
+                    <div *ngIf="color.errors?.['required']">Cor é obrigatório</div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="licensePlate">Placa</label>
+                <input type="text" [(ngModel)]="car.licensePlate" id="licensePlate" name="licensePlate" #licensePlate="ngModel"
+                    required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && licensePlate.invalid }"
+                    placeholder="Digite a placa">
+                <div *ngIf="f.submitted && licensePlate.invalid" class="invalid-feedback">
+                    <div *ngIf="licensePlate.errors?.['required']">Placa é obrigatória</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="yearOfManufacture">Ano Fabricação</label>
+                <input type="text" [(ngModel)]="car.yearOfManufacture" id="yearOfManufacture" name="yearOfManufacture" #yearOfManufacture="ngModel"
+                    required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && yearOfManufacture.invalid }"
+                    placeholder="Digite ano fabricação">
+                <div *ngIf="f.submitted && yearOfManufacture.invalid" class="invalid-feedback">
+                    <div *ngIf="yearOfManufacture.errors?.['required']">Ano Fabricação é obrigatório</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-add-client">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-client" (click)="cleanForm(f)">Cancelar</button>
+        </form>
+    </div>
+</div>
