@@ -2,7 +2,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { ClientModel } from 'src/app/models/ClientModel';
 import { ClientService } from 'src/app/services/client/client.service';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router'
 import { ApiResponseDialogComponent } from 'src/app/components/api-response-dialog/api-response-dialog.component';
 import { StateModel } from 'src/app/models/StateModel';
@@ -18,7 +18,6 @@ import { CityService } from 'src/app/services/city/city.service';
   styleUrls: ['./edit-client.component.css'],
   imports: [
     ReactiveFormsModule, 
-
     CommonModule]
 })
 
@@ -79,7 +78,6 @@ export class EditClientComponent implements OnInit {
     private cityService: CityService,
     private stateService: StateService,
     private dialog: MatDialog, 
-    private fb: FormBuilder,
     private route: ActivatedRoute){}
 
   ngOnInit() {

@@ -1,13 +1,14 @@
-<form id="add-form" #form="ngForm" style="margin-top: 20px;margin-left: 40px;margin-right: 40px;">
+<form id="add-form" [formGroup] = "professionalForm"  style="margin-top: 20px;margin-left: 40px;margin-right: 40px;" (ngSubmit)="updateProfessional()">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Nome</label>
       <input 
-        type="name" 
+        type="text" 
         class="form-control" 
         id="inputEmail4" 
         placeholder="Nome"
-        [(ngModel)]="professionalData.name" name="name"
+        formControlName="name" 
+        name="name"
       >
     </div>
     <div class="form-group col-md-2">
@@ -17,7 +18,7 @@
         class="form-control" 
 
         placeholder="Telefone"
-        [(ngModel)]="professionalData.phone" name="phone"
+        formControlName="phone" name="phone"
       >
     </div>
     <div class="form-group col-md-5">
@@ -27,7 +28,27 @@
         class="form-control" 
 
         placeholder="Email"
-        [(ngModel)]="professionalData.email" name="email"
+        formControlName="email" name="email"
+      >
+    </div>
+    <div class="form-group col-md-5">
+      <label for="text">Código</label>
+      <input 
+        type="code" 
+        class="form-control" 
+
+        placeholder="Código"
+        formControlName="code" name="code"
+      >
+    </div>
+    <!-- <div class="form-group col-md-5">
+      <label for="inputBirthdate4">Birthdate</label>
+      <input 
+        type="text" 
+        class="form-control" 
+
+        placeholder="Data nascimento"
+        formControlName="birthdate" name="birthdate"
       >
     </div>
     <div class="form-group col-md-2">
@@ -37,43 +58,13 @@
         class="form-control" 
         id="inputPassword4" 
         placeholder="Password"
-        
       >
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputAddress">Endereço</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-2">
-      <label for="inputState">Cidade</label>
-      <select id="inputState" class="form-control">
-        <option selected>Selecionae...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputState">Estado</label>
-      <select id="inputState" class="form-control">
-        <option selected>Selecione...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
+    </div> -->
   </div>
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
+      <button type="submit" class="btn btn-primary">Salvar</button>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  
 </form>

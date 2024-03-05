@@ -70,9 +70,8 @@ export class ProfessionalService {
       errorMessage = error.error.message;
     } else {
       //Erro ocorreu do lado do servidor
-      errorMessage = `Código do erro: ${error.status}, ` + `mensagem: ${error.message}`;
+      errorMessage = error.error.message;
     }
-    console.log(errorMessage);
     return throwError(errorMessage)
   }
 }

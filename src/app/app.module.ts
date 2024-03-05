@@ -13,7 +13,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RegisterProfessionalComponent } from './components/register-professional/register-professional.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { EditProfessionalComponent } from './components/edit-professional/edit-professional.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CostumeInterceptor } from './services/interceptors/costume.interceptor';
@@ -25,7 +24,6 @@ import { RegisterClientComponent } from './components/register-client/register-c
     AppComponent,
     ApiResponseDialogComponent,
     RegisterProfessionalComponent,
-    EditProfessionalComponent,
     HomePageComponent,
     FooterComponent,
     LoginComponent,
