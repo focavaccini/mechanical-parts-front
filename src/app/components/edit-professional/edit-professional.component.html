@@ -1,7 +1,7 @@
-<form id="add-form" [formGroup] = "professionalForm"  style="margin-top: 20px;margin-left: 40px;margin-right: 40px;" (ngSubmit)="updateProfessional()">
+<form id="add-form" [formGroup] = "professionalForm"  style="margin-top: 20px;margin-left: 400px;margin-right: 400px;" (ngSubmit)="updateProfessional()">
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Nome</label>
+    <div class="form-group col-md-4">
+      <label for="inputEmail4" style="display: inline-block;">Nome</label>
       <input 
         type="text" 
         class="form-control" 
@@ -9,34 +9,35 @@
         placeholder="Nome"
         formControlName="name" 
         name="name"
+        style="display: inline-block;"
       >
     </div>
     <div class="form-group col-md-2">
-      <label for="inputEmail4">Phone</label>
+      <label for="inputEmail4" style="display: inline-block;">Phone</label>
       <input 
         type="phone" 
         class="form-control" 
-
+        style="display: inline-block;"
         placeholder="Telefone"
         formControlName="phone" name="phone"
       >
     </div>
-    <div class="form-group col-md-5">
-      <label for="inputEmail4">Email</label>
+    <div class="form-group col-md-4">
+      <label for="inputEmail4" style="display: inline-block;">Email</label>
       <input 
         type="email" 
         class="form-control" 
-
+        style="display: inline-block;"
         placeholder="Email"
         formControlName="email" name="email"
       >
     </div>
-    <div class="form-group col-md-5">
+    <div class="form-group col-md-2">
       <label for="text">Código</label>
       <input 
         type="code" 
         class="form-control" 
-
+        style="display: inline-block;"
         placeholder="Código"
         formControlName="code" name="code"
       >
