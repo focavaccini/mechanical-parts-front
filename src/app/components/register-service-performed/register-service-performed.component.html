@@ -1,1 +1,101 @@
-<p>register-service-performed works!</p>
+<div class="card add-servicePerformed">
+    <h5 class="card-header">Cadastrar Serviço</h5>
+    <div class="card-body">
+        <form id="add-form" (ngSubmit)="f.form.valid && saveServicePerfomed(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="description">Descrição</label>
+                <input type="text" [(ngModel)]="servicePerformed.description" id="description" name="description"
+                    #description="ngModel" required class="form-control"
+                    [ngClass]="{ 'is-invalid': f.submitted && description.invalid }" placeholder="Digite a descrição">
+                <div *ngIf="f.submitted && description.invalid" class="invalid-feedback">
+                    <div *ngIf="description.errors?.['required']">Descrição é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="observation">Observação</label>
+                <input type="text" [(ngModel)]="servicePerformed.observation" id="observation" name="observation"
+                    #observation="ngModel" required class="form-control"
+                    [ngClass]="{ 'is-invalid': f.submitted && observation.invalid }" placeholder="Digite a observação">
+                <div *ngIf="f.submitted && observation.invalid" class="invalid-feedback">
+                    <div *ngIf="observation.errors?.['required']">Observação é obrigatória</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="problemReported">Problema relatado</label>
+                <input type="text" [(ngModel)]="servicePerformed.problemReported" id="problemReported"
+                    name="problemReported" #problemReported="ngModel" required class="form-control"
+                    [ngClass]="{ 'is-invalid': f.submitted && problemReported.invalid }"
+                    placeholder="Digite o problema relatado">
+                <div *ngIf="f.submitted && problemReported.invalid" class="invalid-feedback">
+                    <div *ngIf="problemReported.errors?.['required']">Problema relatado é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="serviceDays">Dias de serviço</label>
+                <input type="date" [(ngModel)]="servicePerformed.deliveryDate" id="serviceDays" name="serviceDays"
+                    #serviceDays="ngModel" required class="form-control"
+                    [ngClass]="{ 'is-invalid': f.submitted && serviceDays.invalid }"
+                    placeholder="Informe os dias de trabalho">
+                <div *ngIf="f.submitted && serviceDays.invalid" class="invalid-feedback">
+                    <div *ngIf="serviceDays.errors?.['required']">Dias de serviço é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="laborCost">Custo Mão de Obra</label>
+                <input type="number" [(ngModel)]="servicePerformed.laborCost" id="laborCost" name="laborCost"
+                    #laborCost="ngModel" required class="form-control"
+                    [ngClass]="{ 'is-invalid': f.submitted && laborCost.invalid }"
+                    placeholder="Digite o custo da mão de obra" (change)="calculateTotal()">
+                <div *ngIf="f.submitted && laborCost.invalid" class="invalid-feedback">
+                    <div *ngIf="laborCost.errors?.['required']">Custo Mão de Obra é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="totalValue">Valor Total</label>
+                <input type="text" id="totalValue" name="totalValue" class="form-control" disabled
+                    [value]="servicePerformed.totalValue">
+            </div>
+            <div class="form-group">
+                <label for="professional">Profissional</label>
+                <select [(ngModel)]="servicePerformed.professional" id="professional" name="professional"
+                    #professional="ngModel">
+                    <option [ngValue]="null" disabled>Selecione o Profissional</option>
+                    <option *ngFor="let professional of professionals" [ngValue]="professional.name">{{
+                        professional.name }}</option>
+                </select>
+                <div *ngIf="f.submitted && professional.invalid" class="invalid-feedback">
+                    <div *ngIf="professional.errors?.['required']">Profissional é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="car">Carro</label>
+                <select [(ngModel)]="servicePerformed.car" id="car" name="car"
+                    #car="ngModel">
+                    <option [ngValue]="null" disabled>Selecione o Carro</option>
+                    <option *ngFor="let car of cars" [ngValue]="car.model">{{
+                        car.model }}</option>
+                </select>
+                <div *ngIf="f.submitted && car.invalid" class="invalid-feedback">
+                    <div *ngIf="car.errors?.['required']">Carro é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Produtos Utilizados</label>
+                <div *ngFor="let product of products">
+                    <label>
+                        <input type="checkbox" [(ngModel)]="product.selected" [value]="product" name="selectedProducts" (change)="calculateTotal()">
+                        {{ product.name }}
+                        <input type="number" [(ngModel)]="product.quantity" name="quantity{{product.id}}" required class="form-control"
+                            [ngClass]="{ 'is-invalid': f.submitted && product.quantity === null }" placeholder="Quantidade" [disabled]="!product.selected">
+                        <div *ngIf="f.submitted && product.quantity === null" class="invalid-feedback">
+                            Quantidade é obrigatória
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-add-servicePerformed">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-servicePerformed"
+                (click)="cleanForm(f)">Cancelar</button>
+        </form>
+    </div>
+</div>

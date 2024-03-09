@@ -1,4 +1,5 @@
 import { CarModel } from "./CarModel";
+import { ProductModel } from "./ProductModel";
 import { ProfessionalModel } from "./ProfessionalModel";
 
 export class ServicePerformedModel {
@@ -6,10 +7,12 @@ export class ServicePerformedModel {
     description!: string;
     observation!: string;
     problemReported!: string;
-    serviceDays!: number;
-    usedProducts!: string;
+    deliveryDate!: string;
+    usedProducts!: ProductModel[];
+    quantityUsed!: number;
     laborCost!: number;
     totalValue!: number;
-    professional!: ProfessionalModel;
-    car!: CarModel;
+    professional!: any;
+    car!: any;
+    selectedProducts!: ProductModel[];
 }

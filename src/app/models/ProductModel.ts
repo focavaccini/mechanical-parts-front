@@ -4,4 +4,6 @@ export class ProductModel{
     value!: number;
     quantityTotal!: number;
     identifyCode!: string;
+    selected: boolean = false;
+    quantity: number = 0;
 }

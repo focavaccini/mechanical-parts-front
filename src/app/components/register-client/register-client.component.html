@@ -115,7 +115,7 @@
             <div class="form-group">
                 <label for="city">Cidade</label>
                 <select [(ngModel)]="address.city" id="city" name="city" #city="ngModel">
-                <option [ngValue]="null" disabled>Seleciona a Cidade</option>
+                <option [ngValue]="null" disabled>Selecione a Cidade</option>
                 <option *ngFor="let city of cities" [ngValue]="city.name">{{city.name}}</option>
                 </select>
                 <div *ngIf="f.submitted && city.invalid" class="invalid-feedback">

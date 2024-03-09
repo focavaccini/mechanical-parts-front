@@ -18,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CostumeInterceptor } from './services/interceptors/costume.interceptor';
 import { RegisterProductComponent } from './components/register-product/register-product.component';
 import { RegisterClientComponent } from './components/register-client/register-client.component';
+import { RegisterServicePerformedComponent } from './components/register-service-performed/register-service-performed.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { RegisterClientComponent } from './components/register-client/register-c
     HomeComponent,
     RegisterProductComponent,
     RegisterClientComponent,
+    RegisterServicePerformedComponent
   ],
   imports: [
     BrowserModule,
