@@ -5,5 +5,5 @@ export class ProductModel{
     quantityTotal!: number;
     identifyCode!: string;
     selected: boolean = false;
-    quantity: number = 0;
+    quantityUsed: number = 0;
 }

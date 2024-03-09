@@ -13,6 +13,8 @@ export class ServicePerformedModel {
     laborCost!: number;
     totalValue!: number;
     professional!: any;
+    daysForDelivery!: number;
+    status!: string;
     car!: any;
     selectedProducts!: ProductModel[];
 }

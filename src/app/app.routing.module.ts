@@ -12,6 +12,7 @@ import { ListProductsComponent } from './components/list-products/list-products.
 import { RegisterProductComponent } from './components/register-product/register-product.component';
 import { RegisterClientComponent } from './components/register-client/register-client.component';
 import { RegisterServicePerformedComponent } from './components/register-service-performed/register-service-performed.component';
+import { ListServicePerformedComponent } from './components/list-service-performed/list-service-performed.component';
 
 const routes: Routes = [
     {
@@ -31,6 +32,7 @@ const routes: Routes = [
             { path: 'register-professional', component: RegisterProfessionalComponent },
             { path: 'edit-professional/:id', component: EditProfessionalComponent },
             { path: 'list-client', component: ListClientComponent },
+            { path: 'list-service-performed', component: ListServicePerformedComponent },
             { path: 'edit-client/:id', component: EditClientComponent },
             { path: 'list-product', component: ListProductsComponent },
             { path: 'register-product', component: RegisterProductComponent },

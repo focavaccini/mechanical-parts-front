@@ -85,9 +85,9 @@
                     <label>
                         <input type="checkbox" [(ngModel)]="product.selected" [value]="product" name="selectedProducts" (change)="calculateTotal()">
                         {{ product.name }}
-                        <input type="number" [(ngModel)]="product.quantity" name="quantity{{product.id}}" required class="form-control"
-                            [ngClass]="{ 'is-invalid': f.submitted && product.quantity === null }" placeholder="Quantidade" [disabled]="!product.selected">
-                        <div *ngIf="f.submitted && product.quantity === null" class="invalid-feedback">
+                        <input type="number" [(ngModel)]="product.quantityUsed" name="quantity{{product.id}}" required class="form-control"
+                            [ngClass]="{ 'is-invalid': f.submitted && product.quantityUsed === null }" placeholder="Quantidade" [disabled]="!product.selected">
+                        <div *ngIf="f.submitted && product.quantityUsed === null" class="invalid-feedback">
                             Quantidade é obrigatória
                         </div>
                     </label>

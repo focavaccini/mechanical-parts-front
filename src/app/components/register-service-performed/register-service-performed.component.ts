@@ -45,7 +45,7 @@ export class RegisterServicePerformedComponent {
   listProducts() {
     this.productService.getProducts().subscribe((products: ProductModel[]) => {
       this.products = products;
-      this.products.forEach(product => product.quantity = 0);
+      this.products.forEach(product => product.quantityUsed = 0);
     });
   }
 
@@ -56,15 +56,10 @@ export class RegisterServicePerformedComponent {
   }
 
   saveServicePerfomed(form: NgForm) {
-    debugger;
-    if (this.products && this.products.length > 0) {
-      const productsTotal = this.products
-        .filter(product => product.selected)
-        .reduce((total, product) => total + (product.value * product.quantity), 0);
 
-      this.servicePerformed.totalValue = productsTotal + this.servicePerformed.laborCost;
-    }
-    this.servicePerformed.usedProducts = this.products;
+    const productsTotal = this.products.filter(product => product.selected)
+
+    this.servicePerformed.usedProducts = productsTotal;
 
     const selectedCarName = form.value.car;
     const selectedCar = this.cars.find(car => car.model === selectedCarName);
@@ -85,7 +80,7 @@ export class RegisterServicePerformedComponent {
     if (this.products && this.products.length > 0) {
       // Calcula o valor total com base nos produtos selecionados e suas quantidades
       const productsTotal = this.products.filter(product => product.selected)
-        .reduce((total, product) => total + (product.value * product.quantity), 0);
+        .reduce((total, product) => total + (product.value * product.quantityUsed), 0);
 
       // Adiciona o custo da mão de obra ao valor total
       this.servicePerformed.totalValue = productsTotal + this.servicePerformed.laborCost;
