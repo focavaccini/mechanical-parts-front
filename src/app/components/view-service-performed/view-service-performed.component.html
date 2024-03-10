@@ -1,0 +1,58 @@
+<form id="add-form" [formGroup]="servicePerformedForm" style="margin-top: 20px;margin-left: 40px;margin-right: 40px;">
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="inputEmail4">Descrição</label>
+            <input type="text" class="form-control" readonly formControlName="description" name="description">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputEmail4">Observação</label>
+            <input type="text" class="form-control" readonly formControlName="observation" name="observation">
+        </div>
+    </div>
+    <div class="form-row">    
+        <div class="form-group col-md-2">
+            <label for="inputEmail4">Problema Relatado</label>
+            <input type="text" class="form-control" readonly formControlName="problemReported" name="problemReported">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputCpf4">Data Entrega</label>
+            <input type="date" class="form-control" readonly formControlName="deliveryDate" name="deliveryDate">
+        </div>
+        </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="inputBirthdate4">Valor mão de obra</label>
+            <input type="number" class="form-control" readonly formControlName="laborCost" name="laborCost">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputStreet">Valor total</label>
+            <input type="text" class="form-control" readonly formControlName="totalValue" name="totalValue">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="inputNeighborhood">Profissional</label>
+            <input type="text" class="form-control" readonly formControlName="professionalName" name="professionalName">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputNumber">Status</label>
+            <input type="text" class="form-control" readonly formControlName="status" name="status">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="inputNumber">Dias para entrega</label>
+            <input type="number" class="form-control" readonly formControlName="daysForDelivery" name="daysForDelivery">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputNumber">Carro</label>
+            <input type="text" class="form-control" readonly formControlName="car" name="car">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </div>
+    </div>
+
+</form>

@@ -9,7 +9,6 @@ export class ServicePerformedModel {
     problemReported!: string;
     deliveryDate!: string;
     usedProducts!: ProductModel[];
-    quantityUsed!: number;
     laborCost!: number;
     totalValue!: number;
     professional!: any;

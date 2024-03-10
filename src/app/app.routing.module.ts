@@ -13,6 +13,7 @@ import { RegisterProductComponent } from './components/register-product/register
 import { RegisterClientComponent } from './components/register-client/register-client.component';
 import { RegisterServicePerformedComponent } from './components/register-service-performed/register-service-performed.component';
 import { ListServicePerformedComponent } from './components/list-service-performed/list-service-performed.component';
+import { ViewServicePerformedComponent } from './components/view-service-performed/view-service-performed.component';
 
 const routes: Routes = [
     {
@@ -37,7 +38,8 @@ const routes: Routes = [
             { path: 'list-product', component: ListProductsComponent },
             { path: 'register-product', component: RegisterProductComponent },
             { path: 'register-client', component: RegisterClientComponent },
-            { path: 'register-service-performed', component: RegisterServicePerformedComponent }
+            { path: 'register-service-performed', component: RegisterServicePerformedComponent },
+            { path: 'view-service-performed/:id', component: ViewServicePerformedComponent }
         ]
     },
     {

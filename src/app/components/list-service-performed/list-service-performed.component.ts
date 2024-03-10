@@ -40,5 +40,12 @@ getServicePerformeds(){
   })
 }
 
+getServicePerformedById(id: number) {
+    if(id){
+      this.router.navigate(['/view-service-performed/', id]);
+    } else {
+    }
+  }
+
 title = 'list-service-performed';
 }
