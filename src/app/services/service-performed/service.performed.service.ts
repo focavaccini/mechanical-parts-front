@@ -50,7 +50,7 @@ export class ServicePerformedService {
       )
   }
 
-  updateServicePerformed(servicePerformed: ServicePerformedModel): Observable<ServicePerformedModel> {
+  updateServicePerformed(servicePerformed: any): Observable<ServicePerformedModel> {
     return this.httpClient.put<ServicePerformedModel>(this.url + '/' + servicePerformed.id, JSON.stringify(servicePerformed), this.httpOptions)
       .pipe(
         retry(1),

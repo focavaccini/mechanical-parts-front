@@ -1,6 +1,10 @@
 <form id="add-form" [formGroup]="servicePerformedForm" style="margin-top: 20px;margin-left: 40px;margin-right: 40px;">
     <div class="form-row">
         <div class="form-group col-md-2">
+            <label for="inputEmail4">Id</label>
+            <input type="text" class="form-control" readonly formControlName="id" name="id">
+        </div>
+        <div class="form-group col-md-2">
             <label for="inputEmail4">Descrição</label>
             <input type="text" class="form-control" readonly formControlName="description" name="description">
         </div>
@@ -51,7 +55,7 @@
     </div>
     <div class="form-group">
         <div class="form-check">
-            <button type="submit" class="btn btn-primary">Editar</button>
+            <button type="button" class="btn btn-primary"  (click)="editServicePerformed(servicePerformed.id)">Editar</button>
         </div>
     </div>
 

@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServicePerformedModel } from 'src/app/models/ServicePerformedModel';
 import { ServicePerformedService } from 'src/app/services/service-performed/service.performed.service';
 import { ApiResponseDialogComponent } from '../api-response-dialog/api-response-dialog.component';
@@ -13,14 +13,14 @@ import { CommonModule } from '@angular/common';
   templateUrl: './view-service-performed.component.html',
   styleUrls: ['./view-service-performed.component.css'],
   imports: [
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     CommonModule]
 })
-export class ViewServicePerformedComponent {
+export class ViewServicePerformedComponent implements OnInit {
   responseReturn!: string;
 
   apiStatus!: number;
-  servicePerformed = {} as ServicePerformedModel;
+  servicePerformed!: ServicePerformedModel;
   servicePerformeds!: ServicePerformedModel[];
   servicePerformedId!: number;
   servicePerformedData: ServicePerformedModel = {} as ServicePerformedModel;
@@ -37,21 +37,26 @@ export class ViewServicePerformedComponent {
     daysForDelivery: new FormControl(0),
     status: new FormControl(''),
     car: new FormControl(''),
-   })
+  })
 
-    constructor(
-      private servicePerformedService: ServicePerformedService, 
-      private dialog: MatDialog, 
-      private route: ActivatedRoute){}
 
-    ngOnInit() {
-      this.getServicePerformedById();
-    }
+  constructor(
+    private servicePerformedService: ServicePerformedService,
+    private dialog: MatDialog,
+    private route: ActivatedRoute,
+    private router: Router,) { }
 
-    getServicePerformedById() {
-      this.route.params.subscribe(params => {
-        this.servicePerformedService.getServicePerformedById(params['id']).subscribe(
-          {next: (value) => {
+  ngOnInit() {
+    this.servicePerformed = {} as ServicePerformedModel;
+    this.getServicePerformedById();
+  }
+
+  getServicePerformedById() {
+    this.route.params.subscribe(params => {
+      this.servicePerformedService.getServicePerformedById(params['id']).subscribe(
+        {
+          next: (value) => {
+            this.servicePerformed = value
             this.servicePerformedForm.patchValue({
               id: value.id,
               description: value.description,
@@ -65,41 +70,15 @@ export class ViewServicePerformedComponent {
               status: value.status,
               car: value.car.model,
             });
-          }}
-        );
-      });
-    }
+          }
+        }
+      );
+    });
+  }
 
-    // updateProfessional() {
-    //   const professionalData: ServicePerformedModel = {
-    //     id: this.servicePerformedForm.get('id')?.value ?? 0,
-    //     name: this.servicePerformedForm.get('name')?.value ?? '',
-    //     email: this.servicePerformedForm.get('email')?.value ?? '',
-    //     phone: this.servicePerformedForm.get('phone')?.value ?? '',
-    //     code: this.servicePerformedForm.get('code')?.value ?? ''
-    //     }
- 
-    //     this.servicePerformedService.updateServicePerformed(professionalData).subscribe(
-    //      (result) => {
-    //       alert('Profissional atualizado com Sucesso');
-    //     },
-    //     error => {
-    //       console.log(error)
-    //       alert('Erro ao tentar atualizar dados do profissional: ' + error);
-    //     });
-      
-    // }
+  editServicePerformed(id: number) {
+    this.router.navigate(['/edit-service-performed/', id]);
+  }
 
-    cleanForm(form: NgForm){
-      form.resetForm();
-      this.servicePerformed = {} as ServicePerformedModel;
-    }
-
-    openDialog(apiResponse: string): void {
-      const dialogRef = this.dialog.open(ApiResponseDialogComponent, {
-        width: '300px',
-        data: apiResponse,
-      });
-    }
-    title = 'view-service-performed';
+  title = 'view-service-performed';
 }

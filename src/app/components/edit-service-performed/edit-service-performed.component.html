@@ -1,0 +1,98 @@
+<form id="add-form" [formGroup] = "servicePerformedForm"  style="margin-top: 20px;margin-left: 40px;margin-right: 40px;" (ngSubmit)="editServicePerformed()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Descrição</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Descrição"
+          formControlName="description" 
+          name="description"
+        >
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputEmail4">Observação</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Observação"
+          formControlName="observation" name="observation"
+        >
+      </div>
+      <div class="form-group col-md-5">
+        <label for="inputEmail4">Problema Relatado</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Problema Relatado"
+          formControlName="problemReported" name="problemReported"
+        >
+      </div>
+      <div class="form-group col-md-5">
+        <label for="inputCpf4">Data Entrega</label>
+        <input 
+          type="date" 
+          class="form-control" 
+          placeholder="Data Entrega"
+          formControlName="deliveryDate" name="deliveryDate"
+        >
+      </div>
+      <div class="form-group col-md-5">
+        <label for="inputBirthdate4">Valor mão de obra</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          readonly
+          placeholder="Valor mão de obra"
+          formControlName="laborCost" name="laborCost"
+        >
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputStreet">Valor total</label>
+        <input type="text" 
+        class="form-control" 
+        readonly
+        placeholder="Valor Total"
+        formControlName="totalValue" name="totalValue">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputNeighborhood">Profissional</label>
+        <input type="text" 
+        class="form-control"
+        readonly
+        formControlName="professionalName" name="professionalName">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputNumber">Status</label>
+        <input type="text" 
+        class="form-control" 
+        readonly
+        placeholder="Status"
+        formControlName="status" name="status">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputNumber">Dias para entrega</label>
+        <input type="number" 
+        class="form-control" 
+        readonly
+        placeholder="Dias para entrega"
+        formControlName="daysForDelivery" name="daysForDelivery">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputNumber">Carro</label>
+        <input type="text" 
+        class="form-control" 
+        readonly
+        placeholder="Carro"
+        formControlName="car" name="car">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+    
+  </form>
