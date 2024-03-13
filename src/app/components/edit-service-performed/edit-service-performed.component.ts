@@ -85,6 +85,7 @@ export class EditServicePerformedComponent implements OnInit{
         deliveryDate: this.servicePerformedForm.get('deliveryDate')?.value ?? '',
         laborCost: this.servicePerformedForm.get('laborCost')?.value ?? 0,
         totalValue: this.servicePerformedForm.get('totalValue')?.value ?? 0,
+        status: this.servicePerformedForm.get('status')?.value ?? '',
       }
       console.log(servicePerformedData);
 
