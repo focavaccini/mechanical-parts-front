@@ -33,6 +33,13 @@ export class EditServicePerformedComponent implements OnInit{
   servicePerformeds!: ServicePerformedModel[];
   servicePerformedId!: number;
 
+  public status: Array<{name: string}> = [
+    {name : "EM_DIA"},
+    {name : "ATRASADO"},
+    {name : "FINALIZADO"},
+    {name : "ENTREGUE"},
+  ] ;
+
   servicePerformedForm = new FormGroup({
     id: new FormControl(0),
     description: new FormControl(''),

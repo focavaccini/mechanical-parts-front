@@ -37,6 +37,13 @@
           formControlName="deliveryDate" name="deliveryDate"
         >
       </div>
+      <div class="form-group col-md-2">
+        <label for="inputStatus">Status</label>
+        <select id="inputStatus" class="form-control" formControlName = "status">
+          <option [ngValue]="null" disabled>Selecione o status</option>
+          <option *ngFor="let status of status" [ngValue]="status.name" [selected]="status.name === servicePerformedForm.get('status')?.value">{{status.name}}</option>
+        </select>
+      </div>
       <div class="form-group col-md-5">
         <label for="inputBirthdate4">Valor mão de obra</label>
         <input 
@@ -63,14 +70,6 @@
         class="form-control"
         readonly
         formControlName="professionalName" name="professionalName">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputNumber">Status</label>
-        <input type="text" 
-        class="form-control" 
-        readonly
-        placeholder="Status"
-        formControlName="status" name="status">
       </div>
       <div class="form-group col-md-6">
         <label for="inputNumber">Dias para entrega</label>

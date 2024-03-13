@@ -56,6 +56,7 @@
     <div class="form-group">
         <div class="form-check">
             <button type="button" class="btn btn-primary"  (click)="editServicePerformed(servicePerformed.id)">Editar</button>
+            <button type="button" *ngIf="servicePerformed.status === 'FINALIZADO'" class="btn btn-primary" style=" margin-right: 10px;" (click)="paymentServicePerformed(servicePerformed.id)">Realizar pagamento</button>
         </div>
     </div>
 

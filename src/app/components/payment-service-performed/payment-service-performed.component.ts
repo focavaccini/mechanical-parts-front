@@ -1,29 +1,42 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, NgForm, ReactiveFormsModule } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { ReactiveFormsModule, FormGroup, FormControl, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicePerformedModel } from 'src/app/models/ServicePerformedModel';
+import { ServicePerformedPaymentModel } from 'src/app/models/ServicePerformedModelPayment';
 import { ServicePerformedService } from 'src/app/services/service-performed/service.performed.service';
-import { ApiResponseDialogComponent } from '../api-response-dialog/api-response-dialog.component';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  standalone: true,
-  selector: 'app-view-service-performed',
-  templateUrl: './view-service-performed.component.html',
-  styleUrls: ['./view-service-performed.component.css'],
-  imports: [
-    ReactiveFormsModule,
-    CommonModule]
+  selector: 'app-payment-service-performed',
+  templateUrl: './payment-service-performed.component.html',
+  styleUrls: ['./payment-service-performed.component.css'],
 })
-export class ViewServicePerformedComponent implements OnInit {
+export class PaymentServicePerformedComponent implements OnInit {
+
+  constructor(private servicePerformedService: ServicePerformedService,
+    private route: ActivatedRoute,
+    private router: Router,) { }
+
   responseReturn!: string;
 
   apiStatus!: number;
+  servicePerformedPayment!: ServicePerformedPaymentModel;
   servicePerformed!: ServicePerformedModel;
-  servicePerformeds!: ServicePerformedModel[];
-  servicePerformedId!: number;
-  servicePerformedData: ServicePerformedModel = {} as ServicePerformedModel;
+  servicePerformedsPayment!: ServicePerformedPaymentModel[];
+  servicePerformedPaymentId!: number;
+  servicePerformedPaymentData: ServicePerformedPaymentModel = {} as ServicePerformedPaymentModel;
+
+  ngOnInit() {
+    this.servicePerformedPayment = {} as ServicePerformedPaymentModel;
+    this.getServicePerformedById();
+  }
+
+  public payments: Array<{ name: string }> = [
+    { name: "DINHEIRO" },
+    { name: "CARTAO" },
+    { name: "PIX" },
+    { name: "CHEQUE" },
+  ];
 
   servicePerformedForm = new FormGroup({
     id: new FormControl(0),
@@ -38,18 +51,6 @@ export class ViewServicePerformedComponent implements OnInit {
     status: new FormControl(''),
     car: new FormControl(''),
   })
-
-
-  constructor(
-    private servicePerformedService: ServicePerformedService,
-    private dialog: MatDialog,
-    private route: ActivatedRoute,
-    private router: Router,) { }
-
-  ngOnInit() {
-    this.servicePerformed = {} as ServicePerformedModel;
-    this.getServicePerformedById();
-  }
 
   getServicePerformedById() {
     this.route.params.subscribe(params => {
@@ -76,13 +77,18 @@ export class ViewServicePerformedComponent implements OnInit {
     });
   }
 
-  editServicePerformed(id: number) {
-    this.router.navigate(['/edit-service-performed/', id]);
+  savePaymentServicePerformed(form: NgForm) {
+    this.servicePerformedService.savePaymentServicePerformed(this.servicePerformedPayment).subscribe(
+      (response: any) => {
+      alert('Serviço cadastrado com sucesso!')
+      this.cleanForm(form);
+    })
   }
 
-  paymentServicePerformed(id: number) {
-    this.router.navigate(['/payment-service-performed/', id]);
+  cleanForm(form: NgForm) {
+    form.resetForm();
+    this.servicePerformedPayment = {} as ServicePerformedPaymentModel;
   }
 
-  title = 'view-service-performed';
+  title = 'payment-service-performed';
 }

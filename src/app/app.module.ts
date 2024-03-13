@@ -19,6 +19,7 @@ import { CostumeInterceptor } from './services/interceptors/costume.interceptor'
 import { RegisterProductComponent } from './components/register-product/register-product.component';
 import { RegisterClientComponent } from './components/register-client/register-client.component';
 import { RegisterServicePerformedComponent } from './components/register-service-performed/register-service-performed.component';
+import { PaymentServicePerformedComponent } from './components/payment-service-performed/payment-service-performed.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RegisterServicePerformedComponent } from './components/register-service
     HomeComponent,
     RegisterProductComponent,
     RegisterClientComponent,
-    RegisterServicePerformedComponent
+    RegisterServicePerformedComponent,
+    PaymentServicePerformedComponent
   ],
   imports: [
     BrowserModule,
