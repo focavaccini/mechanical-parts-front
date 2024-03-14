@@ -78,9 +78,11 @@ export class PaymentServicePerformedComponent implements OnInit {
   }
 
   savePaymentServicePerformed(form: NgForm) {
+    debugger
+    this.servicePerformedPayment.servicePerformed = this.servicePerformed;
     this.servicePerformedService.savePaymentServicePerformed(this.servicePerformedPayment).subscribe(
       (response: any) => {
-      alert('Serviço cadastrado com sucesso!')
+      alert('Pagamento realizado com sucesso!')
       this.cleanForm(form);
     })
   }

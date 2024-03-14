@@ -15,6 +15,7 @@ import { RegisterServicePerformedComponent } from './components/register-service
 import { ListServicePerformedComponent } from './components/list-service-performed/list-service-performed.component';
 import { ViewServicePerformedComponent } from './components/view-service-performed/view-service-performed.component';
 import { EditServicePerformedComponent } from './components/edit-service-performed/edit-service-performed.component';
+import { PaymentServicePerformedComponent } from './components/payment-service-performed/payment-service-performed.component';
 
 const routes: Routes = [
     {
@@ -41,7 +42,8 @@ const routes: Routes = [
             { path: 'register-client', component: RegisterClientComponent },
             { path: 'register-service-performed', component: RegisterServicePerformedComponent },
             { path: 'view-service-performed/:id', component: ViewServicePerformedComponent },
-            { path: 'edit-service-performed/:id', component: EditServicePerformedComponent }
+            { path: 'edit-service-performed/:id', component: EditServicePerformedComponent },
+            { path: 'payment-service-performed/:id', component: PaymentServicePerformedComponent }
         ]
     },
     {

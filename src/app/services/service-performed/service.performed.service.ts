@@ -42,8 +42,8 @@ export class ServicePerformedService {
       )
   }
 
-  savePaymentServicePerformed(servicePerformed: ServicePerformedPaymentModel): Observable<ServicePerformedModel> {
-    return this.httpClient.post<ServicePerformedModel>(this.url + '/pay-service/' + servicePerformed.id, JSON.stringify(servicePerformed), this.httpOptions)
+  savePaymentServicePerformed(servicePerformedPayment: ServicePerformedPaymentModel): Observable<ServicePerformedModel> {
+    return this.httpClient.post<ServicePerformedModel>(this.url + '/pay-service/' + servicePerformedPayment.servicePerformed.id, JSON.stringify(servicePerformedPayment), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
