@@ -18,14 +18,14 @@ export class PaymentServicePerformedComponent implements OnInit {
     private router: Router,) { }
 
   responseReturn!: string;
-
+  totalValue!: any;
   apiStatus!: number;
   servicePerformedPayment!: ServicePerformedPaymentModel;
   servicePerformed!: ServicePerformedModel;
   servicePerformedsPayment!: ServicePerformedPaymentModel[];
   servicePerformedPaymentId!: number;
   servicePerformedPaymentData: ServicePerformedPaymentModel = {} as ServicePerformedPaymentModel;
-
+  
   ngOnInit() {
     this.servicePerformedPayment = {} as ServicePerformedPaymentModel;
     this.getServicePerformedById();
@@ -71,6 +71,7 @@ export class PaymentServicePerformedComponent implements OnInit {
               status: value.status,
               car: value.car.model,
             });
+            this.totalValue = value.totalValue;
           }
         }
       );

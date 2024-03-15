@@ -1,16 +1,17 @@
 <div class="card add-professional">
     <h5 class="card-header">Adicionar pagamento</h5>
+    <div class="form-group col-md-2">
+        <label for="inputEmail4">Valor Total</label>
+        <input type="text" class="form-control" readonly [(ngModel)]="totalValue" name="totalValue">
+    </div>
     <div class="card-body">
         <form id="add-form" (ngSubmit)="f.form.valid && savePaymentServicePerformed(f)" #f="ngForm" novalidate>
-            <!-- <div class="form-group col-md-2">
-                <label for="value">Valor Total</label>
-                <input type="text" class="form-control" readonly formControlName="totalValue" name="totalValue">
-            </div> -->
             <div class="form-group">
                 <label for="paymentForm">Forma de pagamento</label>
-                <select [(ngModel)]="servicePerformedPayment.paymentForm" id="paymentForm" name="paymentForm" #paymentForm="ngModel">
-                <option [ngValue]="null" disabled>Selecione o genero/option>
-                <option *ngFor="let payment of payments" [ngValue]="payment.name">{{ payment.name }}</option>
+                <select [(ngModel)]="servicePerformedPayment.paymentForm" id="paymentForm" name="paymentForm"
+                    #paymentForm="ngModel">
+                    <option [ngValue]="null" disabled>Selecione o genero/option>
+                    <option *ngFor="let payment of payments" [ngValue]="payment.name">{{ payment.name }}</option>
                 </select>
                 <div *ngIf="f.submitted && paymentForm.invalid" class="invalid-feedback">
                     <div *ngIf="paymentForm.errors?.['required']">Combustível é obrigatório</div>
@@ -18,8 +19,9 @@
             </div>
             <div class="form-group">
                 <label for="totalValuePaied">Valor</label>
-                <input type="number" [(ngModel)]="servicePerformedPayment.totalValuePaied" id="totalValuePaied" name="totalValuePaied" #totalValuePaied="ngModel" required
-                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && totalValuePaied.invalid }"
+                <input type="number" [(ngModel)]="servicePerformedPayment.totalValuePaied" id="totalValuePaied"
+                    name="totalValuePaied" #totalValuePaied="ngModel" required class="form-control"
+                    [ngClass]="{ 'is-invalid': f.submitted && totalValuePaied.invalid }"
                     placeholder="Digite o valor do pagamento">
                 <div *ngIf="f.submitted && totalValuePaied.invalid" class="invalid-feedback">
                     <div *ngIf="totalValuePaied.errors?.['required']">Pagamento total é obrigatório</div>
@@ -27,8 +29,9 @@
             </div>
             <div class="form-group">
                 <label for="installments">Quantidade parcelas</label>
-                <input type="number" [(ngModel)]="servicePerformedPayment.installments" id="installments" name="installments" #installments="ngModel" required
-                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && installments.invalid }"
+                <input type="number" [(ngModel)]="servicePerformedPayment.installments" id="installments"
+                    name="installments" #installments="ngModel" required class="form-control"
+                    [ngClass]="{ 'is-invalid': f.submitted && installments.invalid }"
                     placeholder="Digite o número de parcelas">
                 <div *ngIf="f.submitted && installments.invalid" class="invalid-feedback">
                     <div *ngIf="installments.errors?.['required']">Número de parcelas é obrigatório</div>
@@ -39,4 +42,3 @@
         </form>
     </div>
 </div>
-
