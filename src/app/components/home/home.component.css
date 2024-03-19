@@ -1,80 +1,85 @@
 /* app.component.css */
 .mat-typography {
-    background-color: #007bff;
-  }
-  .title-menu {
-    padding: 10px;
-    background-color: #007bff;
-    text-align: center;
-    font-family: fantasy;
-    font-size: 25px;
-  }
-  
-  .home-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      color: #333;
-    }
-    
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    
-    .title {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-    
-    .subtitle {
-      font-size: 18px;
-    }
-    
-    .menu {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 40px;
-    }
-    
-    .menu-button {
-      padding: 10px 20px;
-      font-size: 16px;
-      color: #fff;
-      background-color: #007bff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      margin: 0 10px;
-    }
-    
-    .menu-button:hover {
-      background-color: #0056b3;
-    }
-    
-    .hero-section {
-      display: flex;
-      align-items: center;
-    }
-    
-    .hero-text {
-      flex: 1;
-    }
-    
-    .hero-title {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-    
-    .hero-description {
-      font-size: 18px;
-      max-width: 400px;
-    }
-    
-    .hero-image {
-      max-width: 600px;
-      border-radius: 5px;
-    }
-    
+  background-color: #007bff;
+}
+
+.title-menu {
+  padding: 10px;
+  background-color: #007bff;
+  text-align: center;
+  font-family: fantasy;
+  font-size: 25px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.menu-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0 10px;
+}
+
+.menu-button:hover {
+  background-color: #0056b3;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.hero-description {
+  font-size: 18px;
+  max-width: 400px;
+}
+
+.hero-image {
+  max-width: 600px;
+  border-radius: 5px;
+}
