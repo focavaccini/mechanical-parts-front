@@ -19,8 +19,6 @@ export class LoginComponent implements OnInit {
 
   login = {} as LoginModel;
 
-  // token!: any;
-
   constructor(private loginService: LoginService,  private dialog: MatDialog, private router: Router){}
 
   requestLogin(form: NgForm) {
@@ -35,11 +33,11 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('tokenDurationTime', JSON.stringify(response.expiredAt));
             this.router.navigateByUrl('/list-professional');
           } else {
-            alert("Usuário Inválido!")
+            this.openDialog("Usuário Inválido!")
           }
         },
         (error) => {
-          console.error('Erro ao buscar dados:', error);
+          this.openDialog("Usuário/Senha Inválido!");
         }
       );
     };
@@ -65,5 +63,6 @@ export class LoginComponent implements OnInit {
       data: apiResponse,
     });
   }
+  
   title = 'request-login';
 }
