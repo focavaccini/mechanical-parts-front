@@ -5,6 +5,8 @@ import { NgForm, NgModel } from '@angular/forms';
 import { ProductImageModel } from 'src/app/models/ProductImage';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiResponseDialogComponent } from '../api-response-dialog/api-response-dialog.component';
+import { CategoryModel } from 'src/app/models/CategoryModel';
+import { CategoryService } from 'src/app/services/category/category.service';
 
 @Component({
   selector: 'app-register-product',
@@ -15,11 +17,40 @@ export class RegisterProductComponent {
 
   product = {} as ProductModel;
   productImage = {} as ProductImageModel;
-  fileError: string = '';
+  category = {} as CategoryModel;
+  categories: CategoryModel[] = [];
 
-  constructor(private productService: ProductService, private dialog: MatDialog) { }
+  constructor(
+    private productService: ProductService, 
+    private categoryService: CategoryService,
+    private dialog: MatDialog) 
+  { }
+
+  ngOnInit() {
+    this.getCategories();
+  }
+
+  getCategories() {
+    this.categoryService.getCategories().subscribe((category: CategoryModel[]) => {
+      this.categories = category;
+      if (this.categories.length > 0) {
+        this.category = this.categories[0]; 
+      }
+    });
+  }
 
   saveProduct(form: NgForm) {
+
+    const selectedCategoryName = form.value.category;
+    const selectedCategory = this.categories.find(category => category.name === selectedCategoryName);
+    
+    if (!selectedCategory) {
+      this.openDialog('Categoria não encontrada');
+      return; // Encerrar a função se a cidade não foi encontrada
+    }
+    
+    this.product.category = selectedCategory
+
     this.productService.saveProduct(this.product).subscribe(
       (response: any) => {
 
@@ -41,11 +72,10 @@ export class RegisterProductComponent {
   onFileSelected(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      const allowedTypes = ['image/jpg', 'image/png']
+      const allowedTypes = ['image/jpg', 'image/jpeg','image/png']
 
       if (file && allowedTypes.includes(file.type)) {
         this.productImage.file = file;
-        this.fileError = '';
       } else {
         this.openDialog('Tipo de arquivo inválido. Apenas imagens JPG, PNG são permitidas.')
         this.productImage.file = null
