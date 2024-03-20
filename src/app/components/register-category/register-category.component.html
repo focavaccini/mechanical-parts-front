@@ -1,0 +1,28 @@
+<div class="card add-category">
+    <h5 class="card-header">Cadastrar categoria</h5>
+    <div class="card-body">
+        <form id="add-form" (ngSubmit)="f.form.valid && saveCategory(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" [(ngModel)]="category.name" id="nome" name="name" #name="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+                    placeholder="Digite o nome">
+                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                    <div *ngIf="name.errors?.['required']">Nome é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="code">Código</label>
+                <input type="text" [(ngModel)]="category.code" id="phone" name="code" #code="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && code.invalid }"
+                    placeholder="Digite o código">
+                <div *ngIf="f.submitted && code.invalid" class="invalid-feedback">
+                    <div *ngIf="code.errors?.['required']">Código é obrigatório</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-add-category">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-category" (click)="cleanForm(f)">Cancelar</button>
+        </form>
+    </div>
+</div>
+

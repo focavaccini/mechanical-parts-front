@@ -20,6 +20,8 @@ import { RegisterProductComponent } from './components/register-product/register
 import { RegisterClientComponent } from './components/register-client/register-client.component';
 import { RegisterServicePerformedComponent } from './components/register-service-performed/register-service-performed.component';
 import { PaymentServicePerformedComponent } from './components/payment-service-performed/payment-service-performed.component';
+import { RegisterCategoryComponent } from './components/register-category/register-category.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { PaymentServicePerformedComponent } from './components/payment-service-p
     RegisterProductComponent,
     RegisterClientComponent,
     RegisterServicePerformedComponent,
-    PaymentServicePerformedComponent
+    PaymentServicePerformedComponent,
+    RegisterCategoryComponent,
   ],
   imports: [
     BrowserModule,
