@@ -1,3 +1,5 @@
+import { CategoryModel } from "./CategoryModel";
+
 export class ProductModel{
     id!: number;
     name!: string;
@@ -6,4 +8,5 @@ export class ProductModel{
     identifyCode!: string;
     selected: boolean = false;
     quantityUsed: number = 0;
+    category!: CategoryModel;
 }
