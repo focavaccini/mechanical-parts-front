@@ -39,12 +39,12 @@ export class ProfessionalService {
   saveProfessional(professional: ProfessionalModel): Observable<ProfessionalModel> {
     return this.httpClient.post<ProfessionalModel>(this.url, JSON.stringify(professional), this.httpOptions)
       .pipe(
-        retry(2),
+        retry(1),
         catchError(this.handleError)
       )
   }
 
-  // utualiza um carro
+  // utualiza um profissional
   updateProfessional(professional: ProfessionalModel): Observable<ProfessionalModel> {
     return this.httpClient.put<ProfessionalModel>(this.url + '/' + professional.id, JSON.stringify(professional), this.httpOptions)
       .pipe(
@@ -53,7 +53,7 @@ export class ProfessionalService {
       )
   }
 
-  // deleta um carro
+  // deleta um profissional
   deleteProfessional(professional: ProfessionalModel) {
     return this.httpClient.delete<ProfessionalModel>(this.url + '/' + professional.id, this.httpOptions)
       .pipe(
@@ -70,7 +70,11 @@ export class ProfessionalService {
       errorMessage = error.error.message;
     } else {
       //Erro ocorreu do lado do servidor
-      errorMessage = error.error.message;
+      if (error.error.message == undefined || error.error.message == null || error.error.message == "") {
+        errorMessage = error.error.description;
+      } else {
+        errorMessage = error.error.message;
+      }
     }
     return throwError(errorMessage)
   }

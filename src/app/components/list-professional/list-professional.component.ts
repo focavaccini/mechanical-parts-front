@@ -38,6 +38,7 @@ export class ListProfessionalComponent implements OnInit{
   }
 
   editProfessional(id: number) {
+    console.log('CHAMOU')
       if(id){
         this.router.navigate(['/edit-professional/', id]);
       } else {

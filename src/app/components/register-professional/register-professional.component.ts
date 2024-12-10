@@ -11,9 +11,6 @@ import { ApiResponseDialogComponent } from 'src/app/components/api-response-dial
   styleUrls: ['./register-professional.component.css']
 })
 
-@Injectable({
-  providedIn: 'root',
-})
 export class RegisterProfessionalComponent {
 
     responseReturn: string | undefined;
@@ -25,7 +22,6 @@ export class RegisterProfessionalComponent {
       constructor(private professionalService: ProfessionalService,  private dialog: MatDialog){}
 
       ngOnInit() {
-        // this.getProfessionals();
         this.rn;
       }
 
@@ -41,24 +37,24 @@ export class RegisterProfessionalComponent {
           this.responseReturn = response;
           alert(this.rn = 'Olá ' + response.name +'. Foi enviado um email com as instruções para o endereço ' + response.email);
         this.cleanForm(form);
+      }, error => {
+        debugger
+        console.log(error)
+        alert('Erro ao tentar cadastrar dados do profissional: ' + error);
       });
     }
   }
 
-    // deleta um profissional
     deleteProfessional(professional: ProfessionalModel) {
       this.professionalService.deleteProfessional(professional).subscribe(() => {
-        // this.getProfessionals();
       });
     }
   
-    // copia o profissional para ser editado.
     editProfessional(professional: ProfessionalModel) {
       this.professional = { ...professional };
     }
 
   cleanForm(form: NgForm){
-    // this.getProfessionals();
     form.resetForm();
     this.professional = {} as ProfessionalModel;
   }

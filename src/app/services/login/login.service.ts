@@ -8,7 +8,7 @@ import { LoginModel } from '../../models/LoginModel'
 interface LoginResponse {
   token: string;
   expiredAt: string;
-  // Outras propriedades, se houver
+  refreshToken: string;
 }
 
 @Injectable({
@@ -16,7 +16,7 @@ interface LoginResponse {
 })
 export class LoginService {
 
-    url = 'http://localhost:8080/authentication/login'
+    url = 'http://localhost:8080/authentication'
 
     constructor(private httpClient: HttpClient) { }
   
@@ -27,11 +27,29 @@ export class LoginService {
 
      // realiza o login
     login(login: LoginModel): Observable<LoginResponse> {
-      return this.httpClient.post<LoginResponse>(this.url, JSON.stringify(login), this.httpOptions)
+      return this.httpClient.post<LoginResponse>(this.url + '/login', JSON.stringify(login), this.httpOptions)
         .pipe(
           retry(2),
           catchError(this.handleError)
         )
+    }
+
+    refreshToken(): Observable<LoginResponse> {
+      const body = this.getRefreshToken();
+      console.log(body)
+      return this.httpClient.post<LoginResponse>(this.url + '/refreshToken', body, this.httpOptions)
+        .pipe(
+          retry(2),
+          catchError(this.handleError)
+        )
+    }
+
+    getAuthToken() {
+      return localStorage.getItem('token') || '';
+    }
+  
+    getRefreshToken() {
+      return localStorage.getItem('refreshToken') || '';
     }
 
     //Manipulação de erros

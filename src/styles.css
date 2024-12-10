@@ -1,3 +1,7 @@
+.footer p {
+  color: #333; /* Altere para a cor desejada */
+}
+
 *{
   margin: auto;
   padding: 0;
@@ -11,7 +15,7 @@
 }
 
 .card-header {
-  background-color: rgb(7, 29, 102);
+  background-color: rgb(253, 253, 253);
 }
 
 .navbar.navbar-expand-lg.navbar-light.bg-light {

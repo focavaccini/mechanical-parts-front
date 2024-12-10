@@ -1,1 +1,51 @@
-<p>edit-product works!</p>
+<form id="add-form" [formGroup] = "productForm" style="margin-top: 20px;margin-left: 40px;margin-right: 40px;" (ngSubmit)="updateProduct()">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputEmail4" style="display: inline-block;">Nome</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="inputEmail4" 
+          placeholder="Nome"
+          formControlName="name" 
+          name="name"
+          style="display: inline-block;"
+        >
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputEmail4" style="display: inline-block;">Valor</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          style="display: inline-block;"
+          placeholder="Value"
+          formControlName="value" name="value"
+        >
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputEmail4" style="display: inline-block;">Código</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          style="display: inline-block;"
+          placeholder="IdentifyCode"
+          formControlName="identifyCode" name="identifyCode"
+        >
+      </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="inputCategoria">Categoria</label>
+          <select id="inputCategoria" class="form-control" formControlName = "category">
+            <option [ngValue]="null" disabled>Seleciona a Categoria</option>
+            <option *ngFor="let categorie of categories" [ngValue]="categorie.name">{{categorie.name}}</option>
+          </select>
+        </div>
+      </div>
+    <div class="form-group">
+      <div class="form-check">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+    
+  </form>

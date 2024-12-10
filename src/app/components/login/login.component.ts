@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('token', JSON.stringify(token));
             localStorage.setItem('user', JSON.stringify(this.login));
             localStorage.setItem('tokenDurationTime', JSON.stringify(response.expiredAt));
+            localStorage.setItem('refreshToken', JSON.stringify(response.refreshToken));
             this.router.navigateByUrl('/list-professional');
           } else {
             this.openDialog("Usuário Inválido!")

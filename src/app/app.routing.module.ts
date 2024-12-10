@@ -17,6 +17,7 @@ import { ViewServicePerformedComponent } from './components/view-service-perform
 import { EditServicePerformedComponent } from './components/edit-service-performed/edit-service-performed.component';
 import { PaymentServicePerformedComponent } from './components/payment-service-performed/payment-service-performed.component';
 import { RegisterCategoryComponent } from './components/register-category/register-category.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
 
 const routes: Routes = [
     {
@@ -45,7 +46,8 @@ const routes: Routes = [
             { path: 'view-service-performed/:id', component: ViewServicePerformedComponent },
             { path: 'edit-service-performed/:id', component: EditServicePerformedComponent },
             { path: 'payment-service-performed/:id', component: PaymentServicePerformedComponent },
-            { path: 'register-category', component: RegisterCategoryComponent }
+            { path: 'register-category', component: RegisterCategoryComponent },
+            { path: 'edit-product/:id', component: EditProductComponent }
         ]
     },
     {

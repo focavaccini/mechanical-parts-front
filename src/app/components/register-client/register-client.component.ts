@@ -108,7 +108,7 @@ export class RegisterClientComponent {
   }
 
   cleanForm(form: NgForm) {
-    // this.getProfessionals();
+
     form.resetForm();
     this.client = {} as ClientModel;
     this.car = {} as CarModel;

@@ -44,7 +44,7 @@ export class ClientService {
       )
   }
 
-  // utualiza um carro
+ 
   updateClient(client: ClientModel): Observable<ClientModel> {
     return this.httpClient.put<ClientModel>(this.url + '/' + client.id, JSON.stringify(client), this.httpOptions)
       .pipe(
@@ -53,7 +53,7 @@ export class ClientService {
       )
   }
 
-  // deleta um carro
+
   deleteClient(client: ClientModel) {
     return this.httpClient.delete<ClientModel>(this.url + '/' + client.id, this.httpOptions)
       .pipe(

@@ -5,5 +5,4 @@ export class ProfessionalModel {
     email!: string;
     phone!: string;
     code!: string;
-    // outras propriedades do usuário
 }

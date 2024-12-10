@@ -1,4 +1,4 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { ProfessionalModel } from 'src/app/models/ProfessionalModel';
 import { ProfessionalService } from 'src/app/services/professional/professional.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
   ]
 })
 
-export class EditProfessionalComponent {
+export class EditProfessionalComponent implements OnInit {
 
   responseReturn!: string;
 
